@@ -20,7 +20,7 @@ function App() {
   useEffect(function() {
     getAdvice()
   }, []) // O array vazio [] garante que a função seja executada apenas uma vez, quando o componente for montado.
-
+ 
  return (
     <div>
       <h1>Meu Projeto React</h1>
