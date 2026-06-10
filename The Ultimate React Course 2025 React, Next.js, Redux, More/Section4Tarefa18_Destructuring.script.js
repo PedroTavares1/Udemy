@@ -142,3 +142,27 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+// Descructuring objects and arrays
+
+const book = getBook(2);
+
+//const title = book.title;
+//const author = book.author;
+
+const { title, author, pages, publicationDate, genres, hasMovieAdaptation } = book; // Destruturação de objetos: 
+// extrai as propriedades 'title' e 'author' do objeto 'book' 
+// e as atribui a variáveis com os mesmos nomes.
+
+console.log(author, title, genres);
+
+//const primaryGenre = genres[0]; // Acessando o primeiro gênero do array 'genres'
+//  usando indexação
+//const secondaryGenre = genres[1]; // Acessando o segundo gênero do array 'genres'
+// usando indexação
+
+const [primaryGenre, secondaryGenre] = genres; // Destruturação de arrays: 
+// extrai os elementos do array 'genres' e os atribui a variáveis 
+// 'primary' e 'secondary' respectivamente.
+
+console.log(primaryGenre, secondaryGenre);
