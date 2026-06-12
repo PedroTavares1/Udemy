@@ -196,3 +196,21 @@ pagesRange;
 
 console.log(`The Book has ${pagesRange} pages.`); 
 // Usando template literals para incluir a variável 'pagesRange' em uma string.
+
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+
+//(str) => str.split("-")[0] 
+// Arrow function: uma forma mais concisa de escrever funções anônimas.
+
+// const getYear = (str) => {
+//    return str.split("-")[0]
+//};
+// Arrow function: uma forma mais concisa de escrever funções anônimas.
+
+
+const getYear = (str) => str.split("-")[0]
+
+console.log(getYear(publicationDate));
