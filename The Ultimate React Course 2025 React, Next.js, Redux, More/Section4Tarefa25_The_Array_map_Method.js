@@ -144,7 +144,7 @@ function getBook(id) {
 }
 
 // Descructuring objects and arrays
-
+/*
 const book = getBook(3);
 
 //const title = book.title;
@@ -278,3 +278,18 @@ function getTotalReviewsCount(book) {
 }
 
 console.log(getTotalReviewsCount(book)); 
+
+
+const books = getBooks();
+*/
+
+const x = [1, 2, 3, 4, 5].map(element => element * 2); // Exemplo de uso do método map para multiplicar cada elemento do array por 2
+console.log(x);
+
+const y = [1, 2, 3, 4, 5].map(element => element % 2 === 0);// Exemplo de uso do método map para criar um novo array contendo valores booleanos indicando se cada elemento do array original é par ou não
+console.log(y);
+
+const y2 = [1, 2, 3, 4, 5].filter(element => element % 2 === 0);// Exemplo de uso do método filter para criar um novo array contendo apenas os elementos pares do array originalq
+console.log(y2);
+
+const titles = books.map((book) => book.title);
