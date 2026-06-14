@@ -144,7 +144,7 @@ function getBook(id) {
 }
 
 // Descructuring objects and arrays
-/*
+
 const book = getBook(3);
 
 //const title = book.title;
@@ -280,8 +280,8 @@ function getTotalReviewsCount(book) {
 console.log(getTotalReviewsCount(book)); 
 
 
+
 const books = getBooks();
-*/
 
 const x = [1, 2, 3, 4, 5].map(element => element * 2); // Exemplo de uso do método map para multiplicar cada elemento do array por 2
 console.log(x);
@@ -293,3 +293,11 @@ const y2 = [1, 2, 3, 4, 5].filter(element => element % 2 === 0);// Exemplo de us
 console.log(y2);
 
 const titles = books.map((book) => book.title);
+titles;
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewsCount(book),
+}));
+essentialData; 
