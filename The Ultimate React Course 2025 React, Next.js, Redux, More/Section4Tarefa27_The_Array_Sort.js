@@ -347,3 +347,19 @@ pagesAllBooks;
 // começando com um valor inicial de 0. O resultado final é a soma total de páginas.
 
 
+const arr = [ 3, 7, 1, 9, 6]; //← original intacto
+// Diferença importante — o sort modifica o array original!
+const sorted = arr.slice().sort((a, b) => a - b); // ← novo array ordenado
+// Exemplo de uso do método sort para ordenar um array de números em ordem crescente.
+// cria uma cópia do array antes de ordenar — por isso o original não muda! neste caso chamada sorted.
+console.log(arr); // — original intacto
+console.log(sorted); // — novo array ordenado
+
+const sortedDesc = arr.slice().sort((a, b) => b - a);
+console.log(sortedDesc); // — novo array ordenado em ordem decrescente
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+console.log(sortedByPages);
+ // Exemplo de uso do método sort para ordenar um array de objetos (livros) com base em uma propriedade (número de páginas).
+// O método slice() é usado para criar uma cópia do array 'books' antes de ordená-lo, 
+// garantindo que o array original permaneça inalterado. O método sort() é então usado para ordenar os livros em ordem decrescente com base no número de páginas (b.pages - a.pages). O resultado é um novo array 'sortedByPages' contendo os livros ordenados por número de páginas.
