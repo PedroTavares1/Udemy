@@ -345,3 +345,5 @@ pagesAllBooks;
 // Exemplo de uso do método reduce para calcular a soma total de páginas de todos os livros no array 'books'.
 // O método reduce itera sobre cada livro, acumulando a soma das páginas em 'acc', 
 // começando com um valor inicial de 0. O resultado final é a soma total de páginas.
+
+
