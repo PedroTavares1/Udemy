@@ -301,3 +301,30 @@ const essentialData = books.map((book) => ({
   reviewsCount: getTotalReviewsCount(book),
 }));
 essentialData; 
+// const longBooks = books.filter((book) => book.pages > 500);
+// longBooks; 
+// // Exemplo de uso do método filter para criar um novo array contendo apenas os livros com mais de 500 páginas
+
+// const longBookWithMovie = books
+// .filter((book) => book.pages > 500)
+// .filter((book) => book.hasMovieAdaptation);
+// longBookWithMovie; 
+// Exemplo de encadeamento de métodos filter *com mais de 1 parametro*
+// para criar um novo array contendo: apenas os livros com mais de 500 páginas e que tenham sido adaptados para filme
+
+const longBookWithMovie = books
+.filter((book) => book.pages > 500 && book.hasMovieAdaptation);
+longBookWithMovie; 
+// Exemplo de uso do operador lógico && dentro do método filter
+// para criar um novo array contendo apenas os livros com mais de 500 páginas e que tenham sido adaptados para filme
+// Metodo mais eficiente do que encadear dois filtros separados, porque percorre o array apenas uma vez,
+// em vez de percorrer o array duas vezes como no exemplo anterior.
+
+const adventureBooks = books.filter((book) => 
+  book.genres.includes("adventure")
+).map(book=> book.title);
+adventureBooks;
+// Exemplo de encadeamento dos métodos filter e map para criar um novo array 
+// contendo apenas os títulos dos livros que pertencem ao gênero "adventure".
+// O método filter é usado para filtrar os livros que têm "adventure" em seus gêneros,
+// e o método map é usado para extrair apenas os títulos desses livros filtrados.
