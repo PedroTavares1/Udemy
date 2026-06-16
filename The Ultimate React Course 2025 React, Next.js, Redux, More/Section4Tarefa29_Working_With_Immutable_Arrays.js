@@ -363,3 +363,33 @@ console.log(sortedByPages);
  // Exemplo de uso do método sort para ordenar um array de objetos (livros) com base em uma propriedade (número de páginas).
 // O método slice() é usado para criar uma cópia do array 'books' antes de ordená-lo, 
 // garantindo que o array original permaneça inalterado. O método sort() é então usado para ordenar os livros em ordem decrescente com base no número de páginas (b.pages - a.pages). O resultado é um novo array 'sortedByPages' contendo os livros ordenados por número de páginas.
+
+// 1) Add book object to array
+// 1) Adicionar book object a um array de livros
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J. K. Rowling",
+};
+const bookAfterAdd = [...books, newBook];
+console.log(bookAfterAdd);
+// Exemplo de uso do operador spread para criar um novo array de livros
+// que inclui um novo livro (newBook) adicionado ao final do array original (books).
+
+//2) Delete book object from array
+// 2) Deletar book object de um array de livros
+const bookAfterDelete = bookAfterAdd.filter((book) => book.id !== 3);
+console.log(bookAfterDelete);
+// Exemplo de uso do método filter para criar um novo array de livros
+// que exclui o livro com id igual a 3 do array original (books).
+
+//3) Update book object in array
+// 3) Atualizar book object em um array de livros
+const updatedBookInArray = bookAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 1210 } : book
+);
+console.log(updatedBookInArray);
+// Exemplo de uso do método map para criar um novo array de livros
+// onde o livro com id igual a 1 é atualizado para ter um novo número de páginas (1210),
+// enquanto os outros livros permanecem inalterados. 
+// O operador spread é usado para criar uma cópia do livro original e atualizar apenas a propriedade 'pages'.
