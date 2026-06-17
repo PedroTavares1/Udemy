@@ -423,3 +423,4 @@ console.log(todos);
 //→ imprime a Promise retornada por getTodos, porque getTodos é uma função async e retorna uma Promise.
 
 console.log("jonas"); //→ executa imediatamente, sem esperar getTodos!
+ 
