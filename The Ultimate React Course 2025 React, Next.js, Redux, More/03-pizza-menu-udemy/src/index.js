@@ -53,12 +53,46 @@ function App() {
 
     return (
         <div>
-            <h1> Hello React!!!! </h1>
+            <Header />
+            <Menu />    
+            <Footer />
+        </div>
+    );
+}
+
+function Header() {
+    return (
+        <header className="header">
+            <h1> Fast React Pizza Co. </h1>
+        </header>
+    );
+}
+
+function Menu() {
+    return ( 
+        <div>
+            <h2>Our Menu</h2>
+            <Pizza />
             <Pizza />
             <Pizza />
             <Pizza />
         </div>
+    )
+}
+
+function Footer() {
+    return (
+    <footer>{new Date().toLocaleTimeString()}. We're currently open</footer>
     );
+    // return React.createElement("footer", null, "we're currently open");
+    
+    //É o que o JSX vira por baixo dos panos depois de compilado!
+    //  O Vite/Webpack transforma o JSX em createElement automaticamente.
+    
+    //Ninguém escreve React.createElement manualmente hoje em dia — 
+    // o JSX existe exatamente para evitar isso! O professor está mostrando
+    //  para você entender o que acontece por baixo do capô. 
+ 
 }
 
 function Pizza () { 
