@@ -81,9 +81,19 @@ function Menu() {
 }
 
 function Footer() {
+    const hour = new Date().getHours();
+    const openHour = 12;
+    const closeHour = 22;
+    const isOpen = hour >= openHour && hour <= closeHour;
+    alert(isOpen ? "We're open" : "We're closed")
+
     return (
-    <footer>{new Date().toLocaleTimeString()}. We're currently open</footer>
+        <footer>
+            <p>{new Date().toLocaleTimeString()}. We're currently open</p>        
+        </footer>
     );
+    
+    
     // return React.createElement("footer", null, "we're currently open");
     
     //É o que o JSX vira por baixo dos panos depois de compilado!
