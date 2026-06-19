@@ -74,12 +74,38 @@ function Menu() {
     return ( 
         <main className="menu">
             <h2>Our Menu</h2>
-            <Pizza />
-            <Pizza />
-            <Pizza />
-            <Pizza />
+            <Pizza 
+            name="Pizza Spinaci" 
+            ingredient="Tomato, mozarella, spinach, and ricotta cheese" 
+            photoName="pizzas/spinaci.jpg" 
+            price={10}
+            />
+
+            <Pizza 
+            name= "Pizza Funghi"
+            ingredient="Tomato, mozarella, mushrooms, and onion"
+            photoName="pizzas/funghi.jpg"
+            price= {12}
+            />
+        
         </main>
     )
+}
+
+
+function Pizza (props) { 
+console.log(props);
+
+    return (
+        <div className="pizza">
+            <img src={props.photoName} alt={props.name} />
+            <div>   
+                <h3> {props.name}</h3>
+                <p> {props.ingredient} </p>
+                <span>{props.price}</span>
+            </div>        
+        </div>
+    );
 }
 
 function Footer() {
@@ -87,7 +113,7 @@ function Footer() {
     const openHour = 12;
     const closeHour = 22;
     const isOpen = hour >= openHour && hour <= closeHour;
-    //alert(isOpen ? "We're open" : "We're closed")
+    //alert(isOpen ? "We're open" : "We'r e closed")
 
     return (
         <footer className="footer">
@@ -107,15 +133,7 @@ function Footer() {
  
 }
 
-function Pizza () { 
-    return (
-        <div>
-            <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
-            <h3> Pizza Spinaci</h3>
-            <p> Tomato, mozarella, spinach, and ricotta cheese </p>
-        </div>
-    );
-}
+
 
 //React v18
 const root = ReactDOM.createRoot(document.getElementById
