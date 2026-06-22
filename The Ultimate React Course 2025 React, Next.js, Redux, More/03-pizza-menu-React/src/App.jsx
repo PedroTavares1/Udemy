@@ -71,9 +71,9 @@ function App() {
     return ( 
         <main className="menu">
             <h2>Our Menu</h2>
-
+            [.....]
             <ul className = "pizzas"> 
-                {pizzaData.map(pizza => (
+                {pizzaData.map((pizza) => (
                     <Pizza pizzaObj={pizza} key={pizza.name} />
                 ))}
             

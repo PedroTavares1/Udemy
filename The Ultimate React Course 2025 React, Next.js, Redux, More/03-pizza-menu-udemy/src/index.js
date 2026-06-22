@@ -126,7 +126,10 @@ function Footer() {
 
     return (
         <footer className="footer">
-            <p>{new Date().toLocaleTimeString()}. We're currently open</p>        
+            {isOpen && (
+                <p>
+                    Open</p>We're currently open}
+            
         </footer>
     );
     
