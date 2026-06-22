@@ -71,19 +71,27 @@ function App() {
     return ( 
         <main className="menu">
             <h2>Our Menu</h2>
-            <Pizza 
+
+            <ul className = "pizzas"> 
+                {pizzaData.map(pizza => (
+                    <Pizza pizzaObj={pizza} key={pizza.name} />
+                ))}
+            
+            </ul>
+
+            {/*<Pizza 
             name="Pizza Spinaci" 
-            ingredient="Tomato, mozarella, spinach, and ricotta cheese" 
+            ingredients="Tomato, mozarella, spinach, and ricotta cheese" 
             photoName="pizzas/spinaci.jpg" 
             price={10}
             />
 
             <Pizza 
             name= "Pizza Funghi"
-            ingredient="Tomato, mozarella, mushrooms, and onion"
+            ingredients="Tomato, mozarella, mushrooms, and onion"
             photoName="pizzas/funghi.jpg"
             price= {12}
-            />
+            />*/}
         
         </main>
     )
@@ -92,41 +100,41 @@ function App() {
 
 function Pizza (props) { 
 console.log(props);
-
+  
     return (
-        <div className="pizza">
-            <img src={props.photoName} alt={props.name} />
+        <li className="pizza">
+            <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
             <div>   
-                <h3> {props.name}</h3>
-                <p> {props.ingredient} </p>
-                <span>{props.price}</span>
+                <h3> {props.pizzaObj.name}</h3>
+                <p> {props.pizzaObj.ingredients} </p>
+                <span>{props.pizzaObj.price}</span>
             </div>        
-        </div>
+        </li>
     );
 }
   
-  function Footer() {
-    const hour = new Date().getHours();
-    const openHour = 12;
-    const closeHour = 22;
-    const isOpen = hour >= openHour && hour <= closeHour;
-    //alert(isOpen ? "We're open" : "We're closed")
+function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  //alert(isOpen ? "We're open" : "We're closed")
 
-    return (
-        <footer className="footer">
-            <p>{new Date().toLocaleTimeString()}. We're currently open</p>        
-        </footer>
-    );
+  return (
+      <footer className="footer">
+        <p>{new Date().toLocaleTimeString()}. We're currently open</p>        
+      </footer>
+  );
     
     
-    // return React.createElement("footer", null, "we're currently open");
-    
-    //É o que o JSX vira por baixo dos panos depois de compilado!
-    //  O Vite/Webpack transforma o JSX em createElement automaticamente.
-    
-    //Ninguém escreve React.createElement manualmente hoje em dia — 
-    // o JSX existe exatamente para evitar isso! O professor está mostrando
-    //  para você entender o que acontece por baixo do capô. 
+  // return React.createElement("footer", null, "we're currently open");
+  
+  //É o que o JSX vira por baixo dos panos depois de compilado!
+  //  O Vite/Webpack transforma o JSX em createElement automaticamente.
+  
+  //Ninguém escreve React.createElement manualmente hoje em dia — 
+  // o JSX existe exatamente para evitar isso! O professor está mostrando
+  //  para você entender o que acontece por baixo do capô. 
  
 }
 
