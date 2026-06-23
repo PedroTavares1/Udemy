@@ -123,7 +123,7 @@ console.log(props);
   
 function Footer() {
     const hour = new Date().getHours();
-    const openHour = 12;
+    const openHour = 10;
     const closeHour = 22;
     const isOpen = hour >= openHour && hour <= closeHour;
     console.log(isOpen);
@@ -140,30 +140,36 @@ function Footer() {
 
     return (
         <footer className="footer">
-            {isOpen ? (
-                <div className="order">
-                    <p>
-                        We're currently open from {openHour}:00 to {closeHour}:00.
-                    </p>
-                    <button className="btn">Order</button>
-                </div> 
-                ) : <p>
-                        We're currently open from {openHour}:00 to {closeHour}:00.
-                    </p>
-            }
+            {isOpen ?  (
+                <Order openHour={openHour} closeHour={closeHour}/>
+                ) : (
+                <p>
+                    We're currently open from {openHour}:00 to {closeHour}:00.
+                </p>
+            )}
         </footer>
     );
     
+
+    // return React.createElement("footer", null, "we're currently open");
     
-  // return React.createElement("footer", null, "we're currently open");
-  
-  //É o que o JSX vira por baixo dos panos depois de compilado!
-  //  O Vite/Webpack transforma o JSX em createElement automaticamente.
-  
-  //Ninguém escreve React.createElement manualmente hoje em dia — 
-  // o JSX existe exatamente para evitar isso! O professor está mostrando
-  //  para você entender o que acontece por baixo do capô. 
+    //É o que o JSX vira por baixo dos panos depois de compilado!
+    //  O Vite/Webpack transforma o JSX em createElement automaticamente.
+    
+    //Ninguém escreve React.createElement manualmente hoje em dia — 
+    // o JSX existe exatamente para evitar isso! O professor está mostrando
+    //  para você entender o que acontece por baixo do capô. 
  
+}
+
+
+function Order (props) {
+    return <div className="order">
+                    <p>
+                        We're currently open from {props.openHour}:00 to {props.closeHour}:00.
+                    </p>
+                    <button className="btn">Order</button>
+                </div> 
 }
 
 
