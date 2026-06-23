@@ -76,14 +76,13 @@ function App() {
         <main className="menu">
             <h2>Our Menu</h2>
 
-            {numPizzas > 0 && (
+            {numPizzas > 0 ? (
                 <ul className = "pizzas"> 
                     {pizzas.map((pizza) => (
                         <Pizza pizzaObj={pizza} key={pizza.name} />
                     ))}
-                
                 </ul>
-            )}
+            ) : <p>We're still working on our menu. Please come back later :)</p>}
 
 
             {/*<Pizza 
@@ -141,14 +140,17 @@ function Footer() {
 
     return (
         <footer className="footer">
-            {isOpen && (
+            {isOpen ? (
                 <div className="order">
                     <p>
                         We're currently open from {openHour}:00 to {closeHour}:00.
                     </p>
                     <button className="btn">Order</button>
                 </div> 
-            )}
+                ) : <p>
+                        We're currently open from {openHour}:00 to {closeHour}:00.
+                    </p>
+            }
         </footer>
     );
     
