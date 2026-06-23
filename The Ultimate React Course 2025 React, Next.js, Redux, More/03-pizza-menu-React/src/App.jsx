@@ -108,24 +108,36 @@ function App() {
 function Pizza (props) { 
 console.log(props);
   
-    return (
-        <li className="pizza">
-            <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
-            <div>   
-                <h3> {props.pizzaObj.name}</h3>
-                <p> {props.pizzaObj.ingredients} </p>
-                <span>{props.pizzaObj.price}</span>
-            </div>        
-        </li>
-    );
+  if(props.pizzaObj.soldOut) return null;
+
+  return (
+      <li className="pizza">
+          <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+          <div>   
+              <h3> {props.pizzaObj.name}</h3>
+              <p> {props.pizzaObj.ingredients} </p>
+              <span>{props.pizzaObj.price}</span>
+          </div>        
+      </li>
+  );
 }
   
 function Footer() {
     const hour = new Date().getHours();
-    const openHour = 10;
+    const openHour = 12;
     const closeHour = 22;
     const isOpen = hour >= openHour && hour <= closeHour;
+    console.log(isOpen);
+
+    // if (hour >= openHour && hour <= closeHour) alert("We're open"); 
+    //else alert("We're closed");       
     //alert(isOpen ? "We're open" : "We'r e closed")
+
+    // if(!isOpen) return (
+    //     <p>
+    //         We're currently open from {openHour}:00 to {closeHour}:00.
+    //     </p>
+    // );
 
     return (
         <footer className="footer">
