@@ -107,18 +107,18 @@ function Menu() {
 }
 
 
-function Pizza (props) { 
-console.log(props);
+function Pizza ( {pizzaObj : {photoName, name, ingredients, price, soldOut} })  { 
+ //conole.log(pizzaObj);
   
-    if(props.pizzaObj.soldOut) return null;
+    if(soldOut) return null;
 
     return (
         <li className="pizza">
-            <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+            <img src={photoName} alt={name} />
             <div>   
-                <h3> {props.pizzaObj.name}</h3>
-                <p> {props.pizzaObj.ingredients} </p>
-                <span>{props.pizzaObj.price}</span>
+                <h3> {name}</h3>
+                <p> {ingredients} </p>
+                <span>{price}</span>
             </div>        
         </li>
     );
@@ -167,14 +167,18 @@ function Footer() {
 }
 
 
-function Order (props) {
-    return <div className="order">
+function Order({ openHour, closeHour }) {
+    return (
+    <div className="order">
                     <p>
-                        We're currently open from {props.openHour}:00 to {props.closeHour}:00.
+                        We're currently open from {openHour}:00 to {closeHour}:00.
                     </p>
                     <button className="btn">Order</button>
                 </div> 
+    );
 }
+
+
 
 
 
