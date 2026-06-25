@@ -1,4 +1,4 @@
-
+import React from "react";
 
 const pizzaData = [
   {
@@ -77,7 +77,8 @@ function App() {
             <h2>Our Menu</h2>
 
             {numPizzas > 0 ? (
-                <React.Fragment> {/* or "<>"*/}
+                <React.Fragment> 
+                    {/*    or "<> and </>"    */}
                     <p> 
                     Authentican Italian cuisine. 6 creative dishes to choose from. All from our stone oven, all organic, all delicious!
                     </p>
@@ -86,7 +87,8 @@ function App() {
                             <Pizza {...pizza} key={pizza.name} />
                         ))}
                     </ul>
-                </React.Fragment> {/* or "</>"*/}
+                </React.Fragment> 
+                
             ) : <p>We're still working on our menu. Please come back later :)</p>}
 
 

@@ -80,7 +80,8 @@ function Menu() {
             <h2>Our Menu</h2>
 
             {numPizzas > 0 ? (
-                <React.Fragment> {/* or "<>"*/}
+                <React.Fragment> 
+                    {/*    or "<> and </>"    */}
                     <p> 
                     Authentican Italian cuisine. 6 creative dishes to choose from. All from our stone oven, all organic, all delicious!
                     </p>
@@ -90,7 +91,8 @@ function Menu() {
                             <Pizza pizzaObj={pizza} key={pizza.name} />
                         ))}
                     </ul>
-                </React.Fragment> {/* or "</>"*/}
+                </React.Fragment> 
+                
             ) : <p>We're still working on our menu. Please come back later :)</p>}
 
 
