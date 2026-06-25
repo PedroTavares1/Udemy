@@ -107,6 +107,7 @@ function Menu() {
 }
 
 
+
 function Pizza ( {pizzaObj : {photoName, name, ingredients, price, soldOut} })  { 
  //conole.log(pizzaObj);
   
