@@ -23,7 +23,7 @@ const messages = [
 
 
 function App() {
-  const step = 2;
+  const step = 2; 
 
   return (
     <div className="steps">
