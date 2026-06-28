@@ -20,7 +20,13 @@ const messages = [
   "Invest your new income 🤑",
 ];
 
+function handlePrevious() {
+  alert("Previous");
+}
 
+function handleNext() {
+  alert("Next");
+}
 
 function App() {
   const step = 2; 
@@ -38,8 +44,22 @@ function App() {
       </p>
 
       <div className="buttons"> 
-        <button style={{backgroundColor: "#7950f2", color:"#fff"}} className="previous">Previous</button>
-        <button style={{backgroundColor: "#7950f2", color:"#fff"}} className="next">Next</button>
+        <button 
+          style={{backgroundColor: "#7950f2", color:"#fff"}} 
+          className="previous"
+          onClick={() => alert("Previous")}
+          onMouseEnter={handlePrevious}
+        >
+          Previous
+        </button>
+        <button 
+          style={{backgroundColor: "#7950f2", color:"#fff"}} 
+          className="next"
+          onClick={() => alert("Next")}
+          onMouseEnter={handleNext}
+          > 
+          Next
+        </button>
       </div>
     </div>
 
