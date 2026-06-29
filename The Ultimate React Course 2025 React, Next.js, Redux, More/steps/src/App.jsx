@@ -24,7 +24,7 @@ const messages = [
 
 function App() {
   const [step, setStep] = useState(1);
-  console.log(step);
+  //const [test, setTest] = useState({ name: "Jonas"});
   
   function handlePrevious() {
     if (step > 1) setStep(step - 1);
@@ -32,9 +32,12 @@ function App() {
   
   function handleNext() {
     if (step < 3) setStep(step + 1);
+    //BAD PRACTICE
+    // test.name = "Fred";
+    //setTest({name: "Fred"}); //Boa prática
   }
 
-  return (
+  return ( 
     <div className="steps">
       <div className="numbers">
         <div className={step == 1 ? "active" : ""}>1</div>
@@ -44,6 +47,7 @@ function App() {
     
       <p className="message">
         Step {step}: {messages[step - 1]}
+        {/* {test.name} */} 
       </p>
 
       <div className="buttons"> 
