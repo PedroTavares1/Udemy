@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+ 
 
 {/* 
   O useState não é só sobre "não recarregar a página" — isso é característica de qualquer SPA (Single Page Application). 
@@ -20,23 +21,25 @@ const messages = [
   "Invest your new income 🤑",
 ];
 
-function handlePrevious() {
-  alert("Previous");
-}
-
-function handleNext() {
-  alert("Next");
-}
 
 function App() {
-  const step = 2; 
+  const [step, setStep] = useState(1);
+  console.log(step);
+  
+  function handlePrevious() {
+    if (step > 1) setStep(step - 1);
+  }
+  
+  function handleNext() {
+    if (step < 3) setStep(step + 1);
+  }
 
   return (
     <div className="steps">
       <div className="numbers">
-        <div className={`${step == 1 ? "active" : ""}`}>1</div>
-        <div className={`${step == 2 ? "active" : ""}`}>2</div>
-        <div className={`${step == 3 ? "active" : ""}`}>3</div>
+        <div className={step == 1 ? "active" : ""}>1</div>
+        <div className={step == 2 ? "active" : ""}>2</div>
+        <div className={step == 3 ? "active" : ""}>3</div>
       </div>
     
       <p className="message">
@@ -47,16 +50,16 @@ function App() {
         <button 
           style={{backgroundColor: "#7950f2", color:"#fff"}} 
           className="previous"
-          onClick={() => alert("Previous")}
-          onMouseEnter={handlePrevious}
+          onClick={(handlePrevious)}
+          //onMouseEnter={handlePrevious}
         >
           Previous
         </button>
         <button 
           style={{backgroundColor: "#7950f2", color:"#fff"}} 
           className="next"
-          onClick={() => alert("Next")}
-          onMouseEnter={handleNext}
+          onClick={(handleNext)}
+          //onMouseEnter={handleNext}
           > 
           Next
         </button>
