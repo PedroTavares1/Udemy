@@ -26,22 +26,43 @@ function App() {
   const [step, setStep] = useState(1);
   const[isOpen, setIsOpen] = useState(true);
 
+  //Analogia simples:
+
+  // step é uma caixa que guarda um número
+  // setStep é a função que troca o número dentro da caixa
+  // useState(1) criou a caixa e colocou o número 1 dentro dela no início
+
+  // Quando você chama setStep(2), você está pedindo para trocar o conteúdo da caixa de 1 para 2. O step continua sendo a caixa — só o conteúdo muda.
+
+
   //const [test, setTest] = useState({ name: "Jonas"});
   
   function handlePrevious() {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) {
+      setStep((s) => s - 1);
+    }
+
   }
   
   function handleNext() {
-    if (step < 3) setStep(step + 1);
-    //BAD PRACTICE
-    // test.name = "Fred";
-    //setTest({name: "Fred"}); //Boa prática
+    if (step < 3) {
+      setStep((s) => s + 1);
+      setStep((s) => s + 1);
+
+      //O React agrupa os dois — mas com valor direto ele só guarda o valor final.
+      //  Com função ele encadeia as funções em sequência, cada uma recebendo o resultado da anterior.
+      // Por isso a função garante que cada chamada use o valor mais atualizado, mesmo dentro do mesmo evento.
+    }
   }
+
+  //BAD PRACTICE
+  // test.name = "Fred";
+  //setTest({name: "Fred"}); //Boa prática
+
 
   return ( 
     <>
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+      <button className="close" onClick={() => setIsOpen((is) => !is)}>
         &times;
       </button>
 
