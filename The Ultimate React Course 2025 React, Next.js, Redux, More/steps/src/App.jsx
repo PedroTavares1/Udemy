@@ -21,8 +21,17 @@ const messages = [
   "Invest your new income 🤑",
 ];
 
+// Variáveis que não precisam re-renderizar o componente 
+// Para esses, usa const normal — sem useState
 
 function App() {
+  return <div>
+    <Steps />
+    <Steps />
+  </div>
+}
+
+function Steps() {
   const [step, setStep] = useState(1);
   const[isOpen, setIsOpen] = useState(true);
 
@@ -61,7 +70,7 @@ function App() {
 
 
   return ( 
-    <>
+    <div>
       <button className="close" onClick={() => setIsOpen((is) => !is)}>
         &times;
       </button>
@@ -101,7 +110,7 @@ function App() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
