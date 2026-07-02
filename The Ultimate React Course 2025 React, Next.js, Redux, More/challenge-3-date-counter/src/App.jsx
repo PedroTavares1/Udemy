@@ -34,9 +34,11 @@ function Counter() {
       
       <p>
         <span>  
-          {count === 0 ? "Today is: " : ""}
-          {count > 0 ? "In " + count + " days, it will be: " : ""}
-          {count < 0 ? Math.abs(count) + " days ago, it was: " : ""}
+          {count === 0 //condição 1 (se↴ )
+          ? "Today is: " //resultado 1 (faça isso)
+          : count > 0 //condição 2 (Se não, se↴ )
+          ? "In " + count + " days, it will be: "  //resultado 2 (faça isso, se não↴ )
+          : Math.abs(count) + " days ago, it was: "} {/*//resultado 3 else final (Faça isso)*/}
         </span>
         <span>  
           {date.toDateString()}
