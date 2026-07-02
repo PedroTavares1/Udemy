@@ -14,7 +14,7 @@ function Counter() {
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(1);
   
-  const date = new Date("june 21 2027");
+  const date = new Date();
   date.setDate(date.getDate() + count);
 
 
@@ -30,10 +30,18 @@ function Counter() {
         <span>Count: {count}</span>
         <button onClick={() => setCount((c) => c + step)}>+</button>
       </div>
-
       
       
-      
+      <p>
+        <span>  
+          {count === 0 ? "Today is: " : ""}
+          {count > 0 ? "In " + count + " days, it will be: " : ""}
+          {count < 0 ? Math.abs(count) + " days ago, it was: " : ""}
+        </span>
+        <span>  
+          {date.toDateString()}
+        </span>
+      </p>
     </div>
   );
 }
