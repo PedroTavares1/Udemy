@@ -34,7 +34,7 @@ function Form() {
     <h3> What do you need for your 😍 trip? </h3>
   </div>
   )
-}
+} 
 
 function PackingList() {
   return (
