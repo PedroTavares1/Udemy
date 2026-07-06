@@ -31,13 +31,25 @@ function Logo() {
 
 function Form() {
 
-  const [description, setDescription] = useState("")
-  const [quantity, setQuantity] = useState(1)
+  const [description, setDescription] = useState("") //Estado do <input> controlado, usado para armazenar o valor digitado pelo usuário
+  const [quantity, setQuantity] = useState(1) //Estado do <select> controlado, usado para armazenar o valor selecionado pelo usuário
 
 
-  function handleSubmit(e) {
-    e.preventDefault()
+  function handleSubmit(e) { //função para lidar com o envio do formulário
+    e.preventDefault() //previne o comportamento padrão do formulário, que é recarregar a página
     console.log(e);
+
+    if (!description) return //se description estiver vazio, retorna e não faz nada
+    //!description → "description está vazio"
+    //!description não → "diferente de description"
+    //Se description estiver vazio, executa o return — que aqui não retorna nenhum valor, só interrompe a função. Nada mais abaixo é executado.
+
+    const newItem = { description, quantity, packed: false, id: Date.now() } 
+    //Cria um objeto novo com os valores capturados. Date.now() gera um id único baseado no timestamp atual — simples e eficaz para evitar duplicatas.
+    console.log(newItem);
+
+    setDescription("")
+    setQuantity(1)
   }
 
 
@@ -45,10 +57,10 @@ function Form() {
     <form className="add-form" onSubmit={handleSubmit}>
       <h3> What do you need for your 😍 trip? </h3>
       <select 
-        value={quantity} 
-        onChange={(e) => { 
-          setQuantity(Number(e.target.value)) //diferente do de baixo, aqui é Number pq o value do select é string, então precisa converter para number
-          //apenas para ficar mais visivel aos olhos do desenvolvedor
+        value={quantity} //value={quantity} → o select mostra o que está em quantity
+        onChange={(e) => { //quando usuário escolhe um número, onChange dispara
+          setQuantity(Number(e.target.value)) //e.target.value captura o número escolhido (como string)
+          //Number() converte para número //setQuantity() atualiza o estado
         }}
       >
         {Array.from({ length: 20 }, (_, i) => i + 1).map(num => (
