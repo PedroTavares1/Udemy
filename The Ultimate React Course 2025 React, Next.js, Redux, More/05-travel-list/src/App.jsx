@@ -31,6 +31,10 @@ function Logo() {
 
 function Form() {
 
+  const [description, setDescription] = useState("")
+  const [quantity, setQuantity] = useState(1)
+
+
   function handleSubmit(e) {
     e.preventDefault()
     console.log(e);
@@ -40,14 +44,28 @@ function Form() {
   return (
     <form className="add-form" onSubmit={handleSubmit}>
       <h3> What do you need for your 😍 trip? </h3>
-      <select>
+      <select 
+        value={quantity} 
+        onChange={(e) => { 
+          setQuantity(Number(e.target.value)) //diferente do de baixo, aqui é Number pq o value do select é string, então precisa converter para number
+          //apenas para ficar mais visivel aos olhos do desenvolvedor
+        }}
+      >
         {Array.from({ length: 20 }, (_, i) => i + 1).map(num => (
           <option value={num} key={num}>
             {num}
           </option>
         ))}
       </select>
-      <input type="text" placeholder="Item..." />
+      <input 
+        type="text" 
+        placeholder="Item..." 
+        value={description}
+        onChange={(e) => {
+          //console.log(e.target.value, "Input value is empty");
+          setDescription(e.target.value) //aqui é string, então não precisa converter para number
+        }}
+      />
       <button> + Add </button>
   </form>
   );
