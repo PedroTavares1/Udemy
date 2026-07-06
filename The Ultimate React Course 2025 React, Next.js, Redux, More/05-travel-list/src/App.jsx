@@ -48,13 +48,21 @@ function Form() {
     //Cria um objeto novo com os valores capturados. Date.now() gera um id único baseado no timestamp atual — simples e eficaz para evitar duplicatas.
     console.log(newItem);
 
-    setDescription("")
-    setQuantity(1)
+    setDescription("") //limpa o input após o envio do formulário
+    setQuantity(1) //reseta o select para 1 após o envio do formulário
   }
+
+    /*
+      Tudo que fica fora do return no componente são:
+
+      **Declarações de estado (useState)
+      **Funções auxiliares (handleSubmit)
+      **Variáveis calculadas
+    */
 
 
   return (
-    <form className="add-form" onSubmit={handleSubmit}>
+    <form className="add-form" onSubmit={handleSubmit}> //handleSubmit dispara quando o formulário é enviado
       <h3> What do you need for your 😍 trip? </h3>
       <select 
         value={quantity} //value={quantity} → o select mostra o que está em quantity
