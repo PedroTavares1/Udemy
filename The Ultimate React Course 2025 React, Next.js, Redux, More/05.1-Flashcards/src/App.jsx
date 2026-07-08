@@ -1,14 +1,6 @@
 import { useState } from 'react'
 import './App.css'
 
-
-function App() {
-  return (
-    <div>
-      <FlashCards />
-    </div>
-  );
-}
  
 const questions = [
   {
@@ -44,8 +36,38 @@ const questions = [
   }
 ];
 
-function FlashCards() {
-  return <div>TODO</div>;
+function App() {
+  return (
+    <div>
+      <FlashCards />
+    </div>
+  );
 }
+
+function FlashCards() {
+  
+  
+  return <div className="flashcards">
+    {questions.map((question) => {
+      return <FlashCard key={question.id} question={question} />;
+    })}
+  </div>;
+}
+
+
+function FlashCard({ question }) {
+  const [showAnswer, setShowAnswer] = useState(false);
+
+  function handleClick() {
+    setShowAnswer(!showAnswer);
+  }
+  
+  return (
+    <div className="flashcard" onClick={handleClick}>
+         <p>{showAnswer ? question.answer : question.question}</p>
+    </div>
+  );
+}
+
 
 export default App
