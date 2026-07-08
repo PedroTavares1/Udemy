@@ -77,4 +77,36 @@ function FlashCard({ question }) {
 }
 
 
+{/* 
+ *** VERSÃO DO PROFESSOR ***
+ 
+ // A diferença central: na sua versão cada cartão guarda seu próprio estado
+ //  — eles são independentes e não se "enxergam". Na versão do professor,
+ //  o estado fica no pai (FlashCards) e ele decide qual cartão está ativo
+ //  — os filhos apenas recebem essa informação via props.
+
+  function FlashCards() {
+  const [selectedId, setSelectedId] = useState(null);
+
+  function handleClick(id) {
+    setSelectedId(id !== selectedId ? id : null);
+  }
+
+  return (
+    <div className="flashcards">
+      {questions.map((question) => (
+        <div
+          key={question.id}
+          onClick={() => handleClick(question.id)}
+          className={question.id === selectedId ? "selected" : ""}
+        >
+          <p>
+            {question.id === selectedId ? question.answer : question.question}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+*/}
 export default App
