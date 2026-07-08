@@ -9,7 +9,7 @@ function App() {
     </div>
   );
 }
-
+ 
 const questions = [
   {
     id: 3457,
