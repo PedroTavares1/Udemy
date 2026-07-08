@@ -63,10 +63,17 @@ function FlashCard({ question }) {
   }
   
   return (
-    <div className="flashcard" onClick={handleClick}>
-         <p>{showAnswer ? question.answer : question.question}</p>
+    <div className={`flashcard ${showAnswer ? "selected" : ""}`} onClick={handleClick}>
+         <p>{showAnswer ? question.answer : question.question}</p>   
     </div>
   );
+  /*
+  Errado: 
+    <div className="flashcard" onClick={handleClick}
+         className={showAnswer ? "selected" : ""}
+      >
+    </div>
+  */
 }
 
 
