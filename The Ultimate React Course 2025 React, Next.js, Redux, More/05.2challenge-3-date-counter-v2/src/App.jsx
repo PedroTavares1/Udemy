@@ -37,6 +37,7 @@ function Counter() {
       </div>
       
       
+
       <p>
         <span>  
           {count === 0 //condição 1 (se↴ )
@@ -49,6 +50,15 @@ function Counter() {
           {date.toDateString()}
         </span>
       </p>
+
+      <div>        
+        {count !== 0 || step !== 1 ? (
+          <button onClick={() => {
+            setCount(0);
+            setStep(1);
+          }}>Reset</button>
+        ) : null}
+      </div>
     </div>
   );
 }
