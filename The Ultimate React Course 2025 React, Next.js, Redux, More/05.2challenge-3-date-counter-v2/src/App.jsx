@@ -16,7 +16,7 @@ function Counter() {
   
   const date = new Date();
   date.setDate(date.getDate() + count);
-
+ 
 
   return (
     <div>
