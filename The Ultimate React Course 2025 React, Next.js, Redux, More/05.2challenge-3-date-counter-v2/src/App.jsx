@@ -17,7 +17,7 @@ function Counter() {
   const date = new Date();
   date.setDate(date.getDate() + count);
  
-
+ 
   return (
     <div>
       <div>
@@ -26,7 +26,7 @@ function Counter() {
         <span>Step:{step}</span>
         
       </div>    
-      <div>
+      <div> 
         <button onClick={() => setCount((c) => c - step)}>-</button>
         <input 
           type="number" 
