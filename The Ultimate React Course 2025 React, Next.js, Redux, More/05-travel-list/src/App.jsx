@@ -11,11 +11,19 @@ const initialItems = [
 
 
 function App() {
+
+  const [items, setItems] = useState([]) //Estado do array de itens, usado para armazenar os itens adicionados à lista
+
+  function handleAddItems(item) {
+    setItems((items) => [...items, item]) //Atualiza o estado items adicionando o novo item ao array existente
+  }
+
+
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
+      <Form onAddItems={handleAddItems} />
+      <PackingList items={items} />
       <Stats />
     </div>
   );
@@ -29,11 +37,12 @@ function Logo() {
   )
 }
 
-function Form() {
+function Form({ onAddItems }) {
 
   const [description, setDescription] = useState("") //Estado do <input> controlado, usado para armazenar o valor digitado pelo usuário
   const [quantity, setQuantity] = useState(1) //Estado do <select> controlado, usado para armazenar o valor selecionado pelo usuário
-
+  
+  
 
   function handleSubmit(e) { //função para lidar com o envio do formulário
     e.preventDefault() //previne o comportamento padrão do formulário, que é recarregar a página
@@ -47,6 +56,8 @@ function Form() {
     const newItem = { description, quantity, packed: false, id: Date.now() } 
     //Cria um objeto novo com os valores capturados. Date.now() gera um id único baseado no timestamp atual — simples e eficaz para evitar duplicatas.
     console.log(newItem);
+
+    onAddItems(newItem) //chama a função handleAddItems passando o novo item como argumento
 
     setDescription("") //limpa o input após o envio do formulário
     setQuantity(1) //reseta o select para 1 após o envio do formulário
@@ -62,7 +73,7 @@ function Form() {
 
 
   return (
-    <form className="add-form" onSubmit={handleSubmit}> //handleSubmit dispara quando o formulário é enviado
+    <form className="add-form" onSubmit={handleSubmit}> {/* handleSubmit dispara quando o formulário é enviado */}
       <h3> What do you need for your 😍 trip? </h3>
       <select 
         value={quantity} //value={quantity} → o select mostra o que está em quantity
@@ -92,11 +103,11 @@ function Form() {
 } 
 
 
-function PackingList() {
+function PackingList({ items }) {
   return (
   <div className="list">
     <ul> 
-      {initialItems.map(item => (
+      {items.map((item) => (
         <Item key={item.id} item={item} />
       ))}
     </ul>
