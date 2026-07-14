@@ -9,6 +9,7 @@ import './App.css'
 function App() {
 
   const [items, setItems] = useState([]) //Estado do array de itens, usado para armazenar os itens adicionados à lista
+  
 
   function handleAddItems(item) {
     setItems((items) => [...items, item]) //Atualiza o estado items adicionando o novo item ao array existente
@@ -32,7 +33,7 @@ function App() {
       <Logo />
       <Form onAddItems={handleAddItems} />
       <PackingList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
-      <Stats />
+      <Stats items={items} />
     </div>
   );
 }
@@ -54,7 +55,7 @@ function Form({ onAddItems }) {
 
   function handleSubmit(e) { //função para lidar com o envio do formulário
     e.preventDefault() //previne o comportamento padrão do formulário, que é recarregar a página
-    console.log(e);
+    //console.log(e);
 
     if (!description) return //se description estiver vazio, retorna e não faz nada
     //!description → "description está vazio"
@@ -63,7 +64,7 @@ function Form({ onAddItems }) {
 
     const newItem = { description, quantity, packed: false, id: Date.now() } 
     //Cria um objeto novo com os valores capturados. Date.now() gera um id único baseado no timestamp atual — simples e eficaz para evitar duplicatas.
-    console.log(newItem);
+    //console.log(newItem);
 
     onAddItems(newItem) //chama a função handleAddItems passando o novo item como argumento
 
@@ -140,10 +141,30 @@ function Item({ item, onDeleteItem, onToggleItem }) {
   ) 
 }
 
-function Stats() {
-  return <footer className="stats">
-    <em>💼 You have x items on your list, and you already packed X (X%)</em>
-  </footer>
+function Stats({ items }) {
+  if (!items.length)
+    return  (
+    <p className="stats">
+    <em>Start adding some items to your packing list 📝🚀</em> {/*//Se não houver itens, exibe uma mensagem*/}
+    </p>
+  ) 
+
+  const numItems = items.length //Número total de itens na lista
+  const numPacked = items.filter(i => i.packed).length //Número de itens marcados como "packed" (empacotados)
+  const percentage = Math.round((numPacked / numItems) * 100) //Calcula a porcentagem de itens empacotados em relação ao total
+
+  return (
+
+
+    <footer className="stats">
+      <em>
+        {percentage === 100 
+        ? "You got everything! Ready to go ✈️" 
+        : `💼 You have ${numItems} items on your list, and you already packed ${numPacked} (${percentage}%)`
+        } 
+      </em>
+    </footer>
+  )
 }
 
 
