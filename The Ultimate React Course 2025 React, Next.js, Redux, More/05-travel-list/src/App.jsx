@@ -27,12 +27,23 @@ function App() {
     )
   }
 
+  function handleClearList() { 
+  const confirmed = window.confirm("Are you sure you want to delete all items?") //Confirma se o usuário realmente deseja limpar a lista
+  if (confirmed) setItems([]) //Se o usuário confirmar, limpa a lista
+  
+  /*
+    Outra forma de fazer a mesma coisa, sem criar a variável confirmed:
+    window.confirm("Are you sure you want to delete all items?") 
+    && 
+    setItems([])
+  */
+}
 
   return (
     <div className="app">
       <Logo />
-      <Form onAddItems={handleAddItems} />
-      <PackingList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
+      <Form onAddItems={handleAddItems}  />
+      <PackingList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} onClearList={handleClearList} />
       <Stats items={items} />
     </div>
   );
@@ -112,19 +123,19 @@ function Form({ onAddItems }) {
 } 
 
 
-function PackingList({ items, onDeleteItem, onToggleItem }) {
+function PackingList({ items, onDeleteItem, onToggleItem, onClearList }) {
   const [sortBy, setSortBy] = useState("input") //Estado para armazenar o valor selecionado pelo usuário
 
   let sortedItems;
-  if (sortBy === "input") 
+  if (sortBy === "input") //Se o usuário escolher "input", não faz nada, mantém a ordem original
     sortedItems = items;
 
-  if (sortBy === "description") 
+  if (sortBy === "description") //Se o usuário escolher "description", ordena os itens por descrição
     sortedItems = items
       .slice()
       .sort((a, b) => a.description.localeCompare(b.description));
 
-  if (sortBy === "packed") 
+  if (sortBy === "packed") //Se o usuário escolher "packed", ordena os itens por status
     sortedItems = items
       .slice()
       .sort((a, b) => Number(a.packed) - Number(b.packed));
@@ -147,7 +158,10 @@ function PackingList({ items, onDeleteItem, onToggleItem }) {
         <option value="description">Sort by description</option>
         <option value="packed">Sort by packed status</option>
       </select>
-      <button>Clear list</button>
+      <button onClick={() => onClearList()}>Clear list</button>
+      {/* <button onClick={onClearList}>Clear list</button> 
+      //Outra forma de chamar a função onClearList, sem precisar criar uma arrow function.
+      // Mas nesse caso, não é possível passar argumentos para a função. */} 
     </div>
 
   </div>
