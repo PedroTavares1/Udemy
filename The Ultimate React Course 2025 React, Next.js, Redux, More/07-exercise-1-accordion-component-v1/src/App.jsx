@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from 'react'
 
 const faqs = [
   {
@@ -42,12 +43,19 @@ function Accordion({ data }) {
 }
 
 function AccordionItem({ num, title, text }) {
+  const [isOpen, setIsOpen] = useState(false); // Estado para controlar se o item do acordeão está aberto ou fechado
+  
+  function handleToggle() {
+    setIsOpen((isOpen) => !isOpen ) // Alterna o estado isOpen entre true e false
+  }
+
   return (
-    <div className="item">
+    <div className={`item ${isOpen ? "open" : ""}`} onClick={handleToggle}>
       <p className="number"> {num < 9 ? `0${num + 1}` : `${num + 1}`} </p>
       <p className="title"> {title} </p>
-      <p className="icon">+</p>
-      <p className="content-box"> {text} </p>
+      <p className="icon" onClick> {isOpen ? "−" : "+"} </p>
+
+      {isOpen && <div className="content-box"> {text} </div>}
 
     </div>
   );
