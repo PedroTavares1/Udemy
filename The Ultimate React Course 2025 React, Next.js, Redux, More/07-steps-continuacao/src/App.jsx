@@ -82,7 +82,7 @@ function Steps() {
         &times;
       </button>
 
-
+ 
       {isOpen && (    
 
         <div className="steps">
@@ -101,7 +101,7 @@ function Steps() {
             {messages[step - 1]} 
             <Button
              bgColor="#e7e7e7" textColor="#333" onClick={()=>alert(`Learn more about ${messages[step - 1]}`)}
-            >
+            > 
               Learn now
             </Button>
           </StepMessage>
