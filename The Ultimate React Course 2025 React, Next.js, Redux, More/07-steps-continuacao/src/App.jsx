@@ -16,9 +16,9 @@ import './App.css'
 
 
 const messages = [
-  "Learn React ⚛️",
-  "Apply for jobs 💼",
-  "Invest your new income 🤑",
+  "Learn React ⚛️", //posição 0
+  "Apply for jobs 💼", //posição 1
+  "Invest your new income 🤑", //posição 2
 ];
 
 // Variáveis que não precisam re-renderizar o componente 
@@ -98,7 +98,8 @@ function Steps() {
           </p>
 
           <StepMessage step={step}>
-            {messages[step - 1]} 
+            {messages[step - 1]} {/* o -1 é porque o array comeca em 0 e o step começa em 1 */}
+            {/*messages vai ser = valor de Step - 1 para alinhar com o array. => messages = 1 - 1 = 0 buscar o primeiro item do array */}
             <Button
              bgColor="#e7e7e7" textColor="#333" onClick={()=>alert(`Learn more about ${messages[step - 1]}`)}
             > 
