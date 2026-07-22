@@ -92,11 +92,11 @@ function Steps() {
             <div className={step == 3 ? "active" : ""}>3</div>
           </div>
         
-          <p className="message">
-            Step {step}: 
-            {/* {test.name} */} 
-          </p>
-
+          {/*<p className="message">
+            <h3> Step </h3> {step}: {messages[step - 1]}
+            {/* {test.name} *} 
+          </p>*/}
+          
           <StepMessage step={step}>
             {messages[step - 1]} {/* o -1 é porque o array comeca em 0 e o step começa em 1 */}
             {/*messages vai ser = valor de Step - 1 para alinhar com o array. => messages = 1 - 1 = 0 buscar o primeiro item do array */}
