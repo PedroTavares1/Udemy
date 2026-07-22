@@ -28,25 +28,52 @@ function App() {
 }
 
 function Accordion({ data }) {
+  const [curOpen, setCurOpen] = useState(null);
+
   return (
     <div className="accordion">
       {data.map((el, i) => (
         <AccordionItem 
-          num={i} 
+          curOpen={curOpen} 
+          onOpen={setCurOpen}
           title={el.title} 
-          text={el.text}
+          num={i} 
           key={el.title} 
-        />
+        >
+          {el.text} 
+        </AccordionItem>
       ))}
+
+        <AccordionItem 
+          curOpen={curOpen} 
+          onOpen={setCurOpen}
+          title={"Test 1"} 
+          num={22} 
+          key={"Test 1"} 
+        >
+          <p>Allows React developers to:</p>
+          <ul>
+            <li>Break up UI into components</li>
+            <li>Make components reusuable</li>
+            <li>Place state efficiently</li>
+          </ul>
+        </AccordionItem>
+
     </div>
   );
 }
 
-function AccordionItem({ num, title, text }) {
-  const [isOpen, setIsOpen] = useState(false); // Estado para controlar se o item do acordeão está aberto ou fechado
+function AccordionItem({ num, title, curOpen, onOpen, children }) {
+  const isOpen = num === curOpen;
+
+  //const [isOpen, setIsOpen] = useState(false); // Estado para controlar se o item do acordeão está aberto ou fechado
   
   function handleToggle() {
-    setIsOpen((isOpen) => !isOpen ) // Alterna o estado isOpen entre true e false
+    onOpen(isOpen ? null : num); // Chama a função onOpen para atualizar o estado curOpen, se isOpen for true, passa null, se for false, passa o num
+    
+    //onOpen(num); // Chama a função onOpen para atualizar o estado curOpen
+    
+    //setIsOpen((isOpen) => !isOpen ) // Alterna o estado isOpen entre true e false
   }
 
   return (
@@ -55,7 +82,7 @@ function AccordionItem({ num, title, text }) {
       <p className="title"> {title} </p>
       <p className="icon" onClick> {isOpen ? "−" : "+"} </p>
 
-      {isOpen && <div className="content-box"> {text} </div>}
+      {isOpen && <div className="content-box"> {children} </div>}
 
     </div>
   );
