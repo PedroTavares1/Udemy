@@ -126,7 +126,7 @@ function Steps() {
       )}
     </div>
   );
-}
+}  
 
 function StepMessage ({step, children}) {
   return (
