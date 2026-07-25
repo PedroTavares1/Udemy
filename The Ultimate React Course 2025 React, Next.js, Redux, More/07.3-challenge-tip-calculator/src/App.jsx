@@ -10,7 +10,7 @@ function App() {
     </div>
   )
 }
-  function Menu() {   
+  function Menu() { 
     
     const [bill, setBill] = useState("")
     return (
