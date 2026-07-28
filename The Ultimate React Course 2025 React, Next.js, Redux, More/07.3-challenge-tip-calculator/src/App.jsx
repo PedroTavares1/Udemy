@@ -13,8 +13,11 @@ function App() {
   function Menu() { 
     
     const [bill, setBill] = useState("") // Estado para armazenar o valor da conta
+    // const que guarda ESTADO — sobrevive entre renderizações, React "lembra" o valor
+
     const [percentage1, setPercentage1] = useState(0) // Estado para armazenar a porcentagem 1
     const [percentage2, setPercentage2] = useState(0) // Estado para armazenar a porcentagem 2
+
 
 
     return (
@@ -33,8 +36,14 @@ function App() {
           percentage={percentage2} 
           onSelect={setPercentage2} 
         /> 
-        <Respostas />
-        <ButtonReset />
+       
+       {bill > 0 &&
+        <div>
+          <Respostas percentage1={percentage1} percentage2={percentage2} bill={bill}/>
+          <ButtonReset />
+        </div>
+       }
+      
       </div>
       
     )
@@ -99,10 +108,15 @@ function BillInput({ bill, setBill }) {
     )
   }
 
-  function Respostas() {
-
-
-    
+  function Respostas({percentage1, percentage2, bill}) {
+  
+    const tip = bill * ((percentage1 + percentage2) / 2 / 100);  // const comum — só uma conta feita ali na hora
+    const total = bill + tip;
+    return (
+      <div>
+        <h2> You pay ${total} (${bill} + ${tip} tip)</h2>        
+      </div>
+    )
   }
 
   function ButtonReset() {
