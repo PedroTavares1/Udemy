@@ -9,6 +9,6 @@ function Item({ item, onDeleteItem, onToggleItem }) {
       </span>
     </li>
   ) 
-}
+} 
 
 export default Item
