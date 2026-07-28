@@ -14,10 +14,16 @@ function App() {
     
     const [bill, setBill] = useState("") // Estado para armazenar o valor da conta
     // const que guarda ESTADO — sobrevive entre renderizações, React "lembra" o valor
-
     const [percentage1, setPercentage1] = useState(0) // Estado para armazenar a porcentagem 1
     const [percentage2, setPercentage2] = useState(0) // Estado para armazenar a porcentagem 2
 
+     
+    function handleReset 
+    () {
+      setBill("")
+      setPercentage1(0)
+      setPercentage2(0)
+    }
 
 
     return (
@@ -40,13 +46,19 @@ function App() {
        {bill > 0 &&
         <div>
           <Respostas percentage1={percentage1} percentage2={percentage2} bill={bill}/>
-          <ButtonReset />
+          
+          <ButtonReset onReset={handleReset}/>
+
         </div>
        }
+
+       
       
       </div>
       
     )
+
+    
   }
   
  
@@ -119,8 +131,15 @@ function BillInput({ bill, setBill }) {
     )
   }
 
-  function ButtonReset() {
-    
+  function ButtonReset({onReset}) {
+
+  return (
+      <div>
+        <button 
+        onClick={onReset}>Reset
+        </button>
+      </div>
+    )
   }
 
 
