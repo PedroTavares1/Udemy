@@ -19,7 +19,10 @@ function App() {
 
     return (
       <div>
-        <BillInput /> {/*<input que o usuário digite o valor da conta>*/}
+        <BillInput 
+          bill={bill}
+          setBill={setBill} 
+        /> {/*<input que o usuário digite o valor da conta>*/}
         <Perguntas 
           texto="How did you like the service?" 
           percentage={percentage1} 
@@ -39,11 +42,15 @@ function App() {
   
  
 
-function BillInput() {
+function BillInput({ bill, setBill }) {
   return (
     <div>
       <label> How much was the bill? </label>
-      <input type="number" />
+      <input value={bill} onChange={(e) => setBill(Number(e.target.value))}/>
+        {/*
+        value={bill} mostra o valor atual, onChange converte e chama setBill quando o usuário digita.
+        */}
+      
     </div>
   )
 }
