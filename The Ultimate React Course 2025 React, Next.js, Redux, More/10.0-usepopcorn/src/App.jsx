@@ -4,12 +4,12 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 
-function App() {   
+function App() {    
   
   return (
-    <h1>UsePopcorn</h1>  
+    <h1>UsePopcorn</h1>    
 
-  )
+   )
 }
 
 export default App
